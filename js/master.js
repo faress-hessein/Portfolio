@@ -11,7 +11,20 @@ mood.onclick = function (e) {
     document.querySelector(".mood").innerHTML =
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#FFD43B" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"/></svg>';
   }
+
+  // handel dark theme
+  if (!document.body.classList.contains("dark-theme")) {
+    return localStorage.setItem("mood", "light");
+  } else {
+    localStorage.setItem("mood", "dark");
+  }
 };
+
+// handel get theme mood
+let getMood = localStorage.getItem("mood");
+if (getMood === "dark") {
+  document.body.classList.add("dark-theme");
+}
 
 // handel btn nav bar to active
 let navBar = document.querySelector(".nav-bar");
@@ -23,23 +36,24 @@ activeBtns.forEach((activeBtn) => {
   });
 });
 
-// handel btn nav bar to show
+// handel btn nav bar to show menu
 let btnNavBar = document.querySelector(".btn-nav-bar");
 btnNavBar.addEventListener("click", () => {
   document.querySelector(".nav-bar").classList.toggle("show");
 });
 
 // // handel auto type
-var typed = new Typed(".auto-type", {
-  strings: ["front-End Developer"],
-  typeSpeed: 150,
-  backSpeed: 100,
-  loop: true,
-});
+// let name = "Front-End Developer";
+// var typed = new Typed(".auto-type", {
+//   strings: ["faress"],
+//   typeSpeed: 150,
+//   backSpeed: 100,
+//   loop: true,
+// });
 
 // handel send form data to Gmail
 
-// handel secthion skills to make wight full
+// handel secthion skills to make wight in span full
 let scetion = document.querySelector(".skills");
 let spans = document.querySelectorAll(".prog span");
 window.onscroll = function () {
@@ -47,5 +61,57 @@ window.onscroll = function () {
     spans.forEach((span) => {
       span.style.width = span.dataset.width;
     });
+  }
+};
+
+// handel btn img  language
+import translations from "./translations.js";
+
+const languageSelector = document.querySelector(".language-selector");
+let languageAr = document.querySelector(".arbic-foto");
+let languageEn = document.querySelector(".english-foto");
+let cssRtl = document.querySelector(".cssRtl");
+
+languageSelector.addEventListener("click", (event) => {
+  // location.reload();
+  setLanguage(event.target.dataset.lan);
+  localStorage.setItem("lang", event.target.dataset.lan);
+  // console.log(event.target.value);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // const language = localStorage.getItem("lang");
+  setLanguage(localStorage.getItem("lang"));
+});
+
+const setLanguage = (language) => {
+  const elements = document.querySelectorAll("[data-i18n]");
+  elements.forEach((element) => {
+    const translationKey = element.getAttribute("data-i18n");
+    element.textContent = translations[language][translationKey];
+  });
+  if (language === "ar") {
+    document.dir = "rtl";
+    languageEn.classList.remove("d-none");
+    languageAr.classList.add("d-none");
+    cssRtl.href = "/css/bootstrap.minrtl.css";
+
+    // // handel form  language
+    document.querySelector("form input.name").placeholder = "اسمك";
+    document.querySelector("form input.email").placeholder = "بريدك الالكتروني";
+    document.querySelector("form input.number").placeholder = "رقمك";
+    document.querySelector("form textarea.massege").placeholder = "رسالتك";
+  } else {
+    document.dir = "ltr";
+    languageEn.classList.add("d-none");
+    languageAr.classList.remove("d-none");
+    cssRtl.href = "";
+
+    // // handel form  language
+    document.querySelector("form input.name").placeholder = "Your Name";
+    document.querySelector("form input.email").placeholder = "Your Email";
+    document.querySelector("form input.number").placeholder = "Your Number";
+    document.querySelector("form textarea.massege").placeholder =
+      "Your Massege";
   }
 };

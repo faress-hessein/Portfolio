@@ -41,6 +41,15 @@ a {
   margin: 30px 0;
   letter-spacing: 1px;
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+}
+::-webkit-scrollbar-track {
+  background-color: #1f2937;
+}
 /* end Global Rules */
 
 /* start nav */
@@ -69,16 +78,23 @@ nav .mood path {
   height: 20px;
   width: 20px;
 }
+nav .language-selector {
+  height: 20px;
+  cursor: pointer;
+}
+nav .language-selector img {
+  height: 100%;
+}
 /* nav .lightMood.activ {
   display: none;
 }
 nav .nav-bar .lightMood.active {
   display: block;
 } */
-nav .main span {
+nav .main span:nth-child(1) {
   color: var(--main-color);
 }
-nav .main::before {
+/* nav .main::before {
   content: "<";
   position: absolute;
   left: -15px;
@@ -88,7 +104,7 @@ nav .main::after {
   content: "/>";
   position: absolute;
   right: -26px;
-}
+} */
 nav div:nth-child(2) a {
   position: relative;
   text-transform: capitalize;
@@ -165,7 +181,6 @@ nav button svg {
 /* start header */
 .header {
   padding-top: 61.5px;
-  min-height: 100vh;
 }
 .header .img {
   position: relative;
@@ -191,7 +206,7 @@ nav button svg {
 .header h1 {
   text-transform: uppercase;
 }
-.header h1 span {
+.header h1 span:nth-child(2) {
   color: var(--main-color);
 }
 .header h2,
@@ -202,12 +217,33 @@ nav button svg {
   position: relative;
   width: fit-content;
   min-height: 25px;
+  overflow: hidden;
 }
 .header h2::before {
+  content: "";
   position: absolute;
-  content: ">";
-  right: -12px;
+  height: 100%;
+  width: 100%;
+  background-color: var(--textDarkMode);
+  top: 0px;
+  left: 0;
+  z-index: 1;
+  border-left: 1px solid var(--main-color);
+  padding-left: 5px;
+  animation: autoType 7s steps(14) infinite;
+  -webkit-animation: autoType 7s steps(14) infinite;
+}
+@keyframes autoType {
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+.header h2 .tag {
   opacity: 0.5;
+  margin-left: 5px;
 }
 .header p {
   line-height: 30px;
@@ -278,7 +314,6 @@ nav button svg {
 .skills img {
   height: 25px;
   width: 25px;
-  margin-left: 20px;
 }
 .skills .gitImg {
   background-color: white;
@@ -539,7 +574,7 @@ footer div {
   color: var(--textLightMode);
   padding-bottom: 5px;
 }
-footer span {
+footer span:nth-child(1) {
   color: var(--main-color);
   text-transform: uppercase;
 }
@@ -549,7 +584,7 @@ footer .scroltop {
   bottom: 20px;
   left: 20px;
 }
-footer svg {
+footer .scroltop svg {
   position: relative;
   background-color: var(--main-color);
   border-radius: 50%;
@@ -559,6 +594,18 @@ footer svg {
   opacity: 0;
   animation-name: apper;
   animation-timeline: scroll(y);
+}
+footer .icons a {
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+  }
 }
 /* end footer */
 

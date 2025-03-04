@@ -1,0 +1,77 @@
+:root {
+  --main-color: #f0b90b;
+  --second-color: #1f2937;
+  --textDarkMode: #181a20;
+  --textLightMode: #eaecef;
+  --FontAwesome: "Font Awesome 6 Free";
+}
+
+.ms-auto {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+.me-auto {
+  margin-right: 0 !important;
+  margin-left: auto !important;
+}
+.ps-3 {
+  padding-left: 0 !important;
+  padding-right: 1rem !important;
+}
+.me-1 {
+  margin-left: 0.25rem !important;
+}
+.me-3 {
+  margin-left: 1rem !important;
+}
+/* main css */
+footer .active a:hover {
+  transform: translateX(-10px) !important;
+  -webkit-transform: translateX(-10px) !important;
+  -moz-transform: translateX(-10px) !important;
+  -ms-transform: translateX(-10px) !important;
+  -o-transform: translateX(-10px) !important;
+}
+footer .active li a::before {
+  transform: rotatey(180deg) !important;
+  -webkit-transform: rotatey(180deg) !important;
+  -moz-transform: rotatey(180deg) !important;
+  -ms-transform: rotatey(180deg) !important;
+  -o-transform: rotatey(180deg) !important;
+  right: -16px !important;
+  left: auto !important;
+}
+.header h2::before {
+  left: none !important;
+  z-index: 1;
+  border-left: none !important;
+  padding-left: none !important ;
+  animation: none;
+  -webkit-animation: none !important;
+  z-index: 0 !important;
+}
+.skills .prog span {
+  right: 0;
+}
+.header h2::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: var(--textDarkMode);
+  top: 0px;
+  right: 0;
+  z-index: 1;
+  border-right: 1px solid var(--main-color);
+  padding-right: 5px;
+  animation: autoTypel 7s steps(14) infinite;
+  -webkit-animation: autoTypel 7s steps(14) infinite;
+}
+@keyframes autoTypel {
+  50% {
+    right: 100%;
+  }
+  100% {
+    right: 0%;
+  }
+}
