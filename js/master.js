@@ -73,7 +73,7 @@ let languageEn = document.querySelector(".english-foto");
 let cssRtl = document.querySelector(".cssRtl");
 
 languageSelector.addEventListener("click", (event) => {
-  // location.reload();
+  location.reload();
   setLanguage(event.target.dataset.lan);
   localStorage.setItem("lang", event.target.dataset.lan);
   // console.log(event.target.value);
