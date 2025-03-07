@@ -73,9 +73,14 @@ nav .main {
   -webkit-animation: up-and-down 2s linear infinite;
   position: relative;
 }
-@media (max-width: 550px) {
+@media (max-width: 400px) {
   nav .main {
-    font-size: 22px;
+    font-size: 19px;
+  }
+  @media (max-width: 320px) {
+    nav .main {
+      font-size: 16px;
+    }
   }
 }
 nav .mood svg,
@@ -207,9 +212,6 @@ nav button svg {
 .header div {
   color: var(--textLightMode);
 }
-.header div:last-child {
-  flex-wrap: wrap;
-}
 .header h1 {
   text-transform: uppercase;
 }
@@ -225,6 +227,11 @@ nav button svg {
   width: fit-content;
   min-height: 25px;
   overflow: hidden;
+}
+@media (max-width: 550px) {
+  .header h2 {
+    font-size: 17px;
+  }
 }
 .header h2::before {
   content: "";
@@ -287,6 +294,7 @@ nav button svg {
   overflow: hidden;
   margin-right: 20px;
   margin-bottom: 20px;
+  white-space: normal;
 }
 .header .Contact a::before {
   position: absolute;
